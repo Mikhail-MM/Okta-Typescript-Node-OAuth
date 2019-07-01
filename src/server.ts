@@ -1,7 +1,11 @@
+import dotenv from "dotenv";
 import express from "express";
 import path from "path";
+
+dotenv.config();
+
 const app = express();
-const port = 8080; // default port to listen
+const port = process.env.SERVER_PORT; // default port to listen;
 
 // Configure Express to use EJS
 app.set( "views", path.join( __dirname, "views" ) );
