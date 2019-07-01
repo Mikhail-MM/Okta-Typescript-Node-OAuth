@@ -1,7 +1,7 @@
 import { ExpressOIDC } from "@okta/oidc-middleware";
 import session from "express-session";
 
-export const oktaRegistration = (app: any) => {
+export const createOktaOIDCSession = (app: any) => {
     const oidc = new ExpressOIDC({
         client_id: process.env.OKTA_CLIENT_ID,
         client_secret: process.env.OKTA_CLIENT_SECRET,
@@ -17,5 +17,6 @@ export const oktaRegistration = (app: any) => {
     }));
 
     app.use( oidc.router );
+
     app.locals.oidc = oidc;
-}
+};
