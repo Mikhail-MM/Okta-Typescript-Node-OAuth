@@ -15,7 +15,7 @@ app.set( "views", path.join( __dirname, "views" ) );
 app.set( "view engine", "ejs" );
 
 // Configure Session Management - OKTA + OIDC Sessions
-authenticationMiddleware.createOktaOIDCSession (app );
+authenticationMiddleware.createOktaOIDCSession ( app );
 
 // Initialize Okta Pathway Routes
 okta_routes.initializeOktaOIDCRouter( app );

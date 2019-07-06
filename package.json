@@ -12,7 +12,8 @@
     "dev:start": "npm-run-all build start",
     "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
     "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "initdb": "ts-node build-tools/initdb"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +23,9 @@
     "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
-    "express-session": "^1.16.2"
+    "express-session": "^1.16.2",
+    "pg": "^7.11.0",
+    "pg-promise": "^8.7.3"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
@@ -30,6 +33,7 @@
     "@types/express-session": "^1.15.13",
     "@types/fs-extra": "^8.0.0",
     "@types/node": "^12.0.10",
+    "@types/pg": "^7.4.14",
     "@types/shelljs": "^0.8.5",
     "fs-extra": "^8.1.0",
     "nodemon": "^1.19.1",

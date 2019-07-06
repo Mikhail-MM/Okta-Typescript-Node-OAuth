@@ -4,7 +4,11 @@ exports.initializeOktaOIDCRouter = (app) => {
     const oidc = app.locals.oidc;
     // define a route handler for the default home page
     app.get("/", (req, res) => {
-        res.render("index");
+        /* The OIDC middleware will attach a userContext object to all requests
+            as well as an isAuthenticated() bool
+        */
+        const user = req.userContext ? req.userContext.userinfo : null;
+        res.render("index", { isAuthenticated: req.isAuthenticated(), user });
     });
     // define a secure route handler for the login page that redirects to /guitars
     app.get("/login", oidc.ensureAuthenticated(), (req, res) => {
@@ -17,7 +21,8 @@ exports.initializeOktaOIDCRouter = (app) => {
     });
     // define a secure route handler for the guitars page
     app.get("/guitars", oidc.ensureAuthenticated(), (req, res) => {
-        res.render("pages/guitars");
+        const user = req.userContext ? req.userContext.userinfo : null;
+        res.render("pages/guitars", { isAuthenticated: req.isAuthenticated(), user });
     });
 };
 //# sourceMappingURL=oktaRegistrationRoutes.js.map
