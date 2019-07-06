@@ -1,5 +1,13 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const api = __importStar(require("./api"));
 exports.initializeOktaOIDCRouter = (app) => {
     const oidc = app.locals.oidc;
     // define a route handler for the default home page
@@ -24,5 +32,6 @@ exports.initializeOktaOIDCRouter = (app) => {
         const user = req.userContext ? req.userContext.userinfo : null;
         res.render("pages/guitars", { isAuthenticated: req.isAuthenticated(), user });
     });
+    api.registerGuitarCRUDAPI(app);
 };
 //# sourceMappingURL=oktaRegistrationRoutes.js.map

@@ -17,10 +17,12 @@ const authenticationMiddleware = __importStar(require("./middleware/authenticati
 const okta_routes = __importStar(require("./routes/oktaRegistrationRoutes"));
 dotenv_1.default.config({ path: path_1.default.join(__dirname, "/../.env") });
 const app = express_1.default();
+app.use(express_1.default.json());
 const port = process.env.SERVER_PORT; // default port to listen;
 // Configure Express to use EJS
 app.set("views", path_1.default.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
 // Configure Session Management - OKTA + OIDC Sessions
 authenticationMiddleware.createOktaOIDCSession(app);
 // Initialize Okta Pathway Routes

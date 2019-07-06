@@ -16,15 +16,15 @@ const init = async () => {
         // Split the file into separate statements
         const statements = sql.split(/;\s*$/m);
         // tslint:disable-next-line:no-console
-        console.log(statements)
+        console.log(statements);
         for ( const statement of statements ) {
             if ( statement.length > 3 ) {
                 await client.query( statement );
             }
         }
-    } catch(err) {
+    } catch (err) {
         // tslint:disable-next-line:no-console
-        console.log(err)
+        console.log(err);
         throw err;
     } finally {
         // close the database
